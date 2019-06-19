@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: eureka
+  profiles:
+    active:
+      default
