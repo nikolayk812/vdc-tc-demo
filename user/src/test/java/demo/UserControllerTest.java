@@ -1,4 +1,4 @@
-package cd.tc.demo.user;
+package demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

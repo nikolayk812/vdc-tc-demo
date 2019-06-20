@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <start-class>cd.tc.demo.user.UserApplication</start-class>
+        <start-class>demo.UserApplication</start-class>
         <docker.image.name>tc-demo/user</docker.image.name>
         <docker.image.tag>latest</docker.image.tag>
     </properties>

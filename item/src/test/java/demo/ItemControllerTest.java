@@ -1,4 +1,4 @@
-package cd.tc.demo.item;
+package demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;

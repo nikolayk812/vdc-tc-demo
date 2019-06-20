@@ -1,4 +1,4 @@
-package cd.tc.demo.user;
+package demo;
 
 import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;

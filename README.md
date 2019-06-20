@@ -14,11 +14,12 @@ There are 3 services in this demo:
 
 ## Stack
 
-- Spring Boot, Cloud
+- Spring Boot
 - Spring Cloud Netflix Eureka
 - Docker
 - Postgres, Redis
 - TestContainers
+- JUnit 5
 
 ## Setup
 

@@ -16,7 +16,6 @@
     </parent>
 
     <properties>
-        <start-class>cd.tc.demo.eureka.EurekaApplication</start-class>
         <docker.image.name>tc-demo/eureka</docker.image.name>
         <docker.image.tag>latest</docker.image.tag>
     </properties>
