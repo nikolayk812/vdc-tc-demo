@@ -11,13 +11,13 @@ public class UserContainer extends GenericContainer<UserContainer> {
         super("tc-demo/user:latest");
         addExposedPorts(port);
         withNetwork(network);
-        withNetworkAliases("user-service");
+        withNetworkAliases("user-alias");
         waitingFor(new HostPortWaitStrategy());
 
         addEnv("SERVER_PORT", port + "");
         addEnv("EUREKASERVER_PORT", "8761");
-        addEnv("EUREKASERVER_URI", "http://eureka:8761/eureka/");
-        addEnv("POSTGRES_URL", "jdbc:postgresql://postgres:5432/users");
+        addEnv("EUREKASERVER_URI", "http://eureka-alias:8761/eureka/");
+        addEnv("POSTGRES_URL", "jdbc:postgresql://postgres-alias:5432/users");
         addEnv("POSTGRES_USERNAME", "postgres");
         addEnv("POSTGRES_PASSWORD", "password");
 

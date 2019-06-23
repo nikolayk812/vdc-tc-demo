@@ -12,7 +12,7 @@ public class PostgresExtension implements BeforeAllCallback, AfterAllCallback {
             .withDatabaseName("users")
             .withUsername("postgres")
             .withPassword("password")
-            .withNetworkAliases("postgres")
+            .withNetworkAliases("postgres-alias")
             .withNetwork(NetworkHolder.network());
 
     @Override

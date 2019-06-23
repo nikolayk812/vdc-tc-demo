@@ -9,7 +9,7 @@ public class RedisContainer extends GenericContainer<RedisContainer> {
         super("redis:5.0.5");
         addExposedPorts(port);
         withNetwork(network);
-        withNetworkAliases("redis");
+        withNetworkAliases("redis-alias");
         waitingFor(new HostPortWaitStrategy());
     }
 }

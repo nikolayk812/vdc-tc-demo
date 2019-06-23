@@ -11,7 +11,7 @@ public class EurekaContainer extends GenericContainer<EurekaContainer> {
         super("tc-demo/eureka:latest");
         addExposedPorts(port);
         withNetwork(network);
-        withNetworkAliases("eureka");
+        withNetworkAliases("eureka-alias");
         withLogConsumer(new Slf4jLogConsumer(LoggerFactory.getLogger(" --- eureka --- ")));
         waitingFor(new HostPortWaitStrategy());
     }

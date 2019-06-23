@@ -13,12 +13,12 @@ public class ItemContainer extends GenericContainer<ItemContainer> {
         super("tc-demo/item:latest");
         addExposedPorts(port);
         withNetwork(network);
-        withNetworkAliases("item-service");
+        withNetworkAliases("item-alias");
 
         addEnv("SERVER_PORT", port + "");
         addEnv("EUREKASERVER_PORT", "8761");
-        addEnv("EUREKASERVER_URI", "http://eureka:8761/eureka/");
-        addEnv("REDIS_HOST", "redis");
+        addEnv("EUREKASERVER_URI", "http://eureka-alias:8761/eureka/");
+        addEnv("REDIS_HOST", "redis-alias");
         addEnv("REDIS_PORT", "6379");
 
         HttpWaitStrategy httpWaitStrategy = new HttpWaitStrategy();
