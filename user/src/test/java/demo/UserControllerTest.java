@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -15,6 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @ContextConfiguration(initializers = {UserControllerTest.PropertiesInitializer.class})
@@ -40,6 +42,15 @@ public class UserControllerTest {
         User user = controller.get(response.getId());
         assertThat(user.getName(), equalTo("Nikolay"));
     }
+
+    @Test
+    public void testCreateDuplicateEmail() {
+        controller.create(new User("", "Andrey", "andrey@testcontainers.org"));
+
+        assertThrows(DuplicateKeyException.class, () ->
+                controller.create(new User("", "Nikolay", "andrey@testcontainers.org")));
+    }
+
 
     static class PropertiesInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {

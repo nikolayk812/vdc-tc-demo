@@ -33,8 +33,3 @@ To run end-to-end tests:
 cd test-runner
 mvn test
 ```
-
-
-## Usage examples
-
-Http calls examples could be found in ./requests.http
