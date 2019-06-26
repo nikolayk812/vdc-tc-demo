@@ -33,16 +33,19 @@ class EndToEndTest {
 
     @Test
     void testFlow(UserInfo userInfo, ItemInfo itemInfo) {
+        //create user
         User user = new User("", "Nikolay", "nikolay@testcontainers.org");
         String userUrl = "http://localhost:" + userInfo.getPort() + "/users";
         UserCreateResponse userCreateResponse = post(userUrl, user, UserCreateResponse.class);
         assertThat(userCreateResponse.getId(), not(isEmptyString()));
 
+        //create item for user above
         Item item = new Item("", "T-shirt", "XL", userCreateResponse.getId());
         String itemUrl = "http://localhost:" + itemInfo.getPort() + "/items";
         ItemCreateResponse itemCreateResponse = post(itemUrl, item, ItemCreateResponse.class);
         assertThat(itemCreateResponse.getId(), not(isEmptyString()));
 
+        //get item with user info embedded
         ItemResponse itemResponse = restTemplate.getForEntity(itemUrl + "/" + itemCreateResponse.getId(), ItemResponse.class).getBody();
         assertThat(itemResponse.getCategory(), equalTo("T-shirt"));
         assertThat(itemResponse.getUser().getName(), equalTo("Nikolay"));

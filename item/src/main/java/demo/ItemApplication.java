@@ -68,7 +68,7 @@ public class ItemApplication {
                         mapper.writeValueAsString(response.getBody()));
             }
 
-            //store item in memory
+            //store item into memory
             String id = UUID.randomUUID().toString();
             Item item = new Item(id, request.getCategory(), request.getDesc(), request.getUserId());
             itemStore.put(id, item);
