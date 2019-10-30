@@ -30,7 +30,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.5</version>
+            <version>42.2.8</version>
         </dependency>
 
         <dependency>
@@ -65,10 +65,11 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>1.2.0</version>
+                <version>${docker-maven-plugin.version}</version>
                 <configuration>
                     <imageName>${docker.image.name}:${docker.image.tag}</imageName>
                     <dockerDirectory>${basedir}/target/dockerfile</dockerDirectory>
@@ -81,6 +82,7 @@
                     </resources>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

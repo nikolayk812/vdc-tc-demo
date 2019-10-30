@@ -39,8 +39,17 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 public class ItemControllerTest {
 
     @Container
-    static GenericContainer redis = new GenericContainer("redis:5.0.5")
+    static GenericContainer redis = new GenericContainer("redis:5.0.6")
             .withExposedPorts(6379);
+
+    static class PropertiesInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+            TestPropertyValues.of(
+                    "spring.redis.host=localhost",
+                    "spring.redis.port=" + redis.getFirstMappedPort()
+            ).applyTo(configurableApplicationContext.getEnvironment());
+        }
+    }
 
     @Autowired
     private ItemApplication.ItemController controller;
@@ -78,16 +87,6 @@ public class ItemControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(user))
                 );
-    }
-
-    static class PropertiesInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues.of(
-                    "spring.redis.host=localhost",
-                    "spring.redis.port=" + redis.getFirstMappedPort(),
-                    "eureka.client.enabled=false"
-            ).applyTo(configurableApplicationContext.getEnvironment());
-        }
     }
 
 }

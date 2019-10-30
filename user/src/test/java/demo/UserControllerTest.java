@@ -27,11 +27,20 @@ public class UserControllerTest {
     private UserApplication.UserController controller;
 
     @Container
-    private static final PostgreSQLContainer postgres = new PostgreSQLContainer()
+    private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:9.6.15")
             .withDatabaseName("users")
             .withUsername("postgres")
             .withPassword("password");
 
+    static class PropertiesInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+            TestPropertyValues.of(
+                    "spring.datasource.url=" + postgres.getJdbcUrl(),
+                    "spring.datasource.username=" + postgres.getUsername(),
+                    "spring.datasource.password=" + postgres.getPassword()
+            ).applyTo(configurableApplicationContext.getEnvironment());
+        }
+    }
 
     @Test
     public void testCreateGetUser() {
@@ -51,16 +60,5 @@ public class UserControllerTest {
                 controller.create(new User("", "Nikolay", "andrey@testcontainers.org")));
     }
 
-
-    static class PropertiesInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues.of(
-                    "spring.datasource.url=" + postgres.getJdbcUrl(),
-                    "spring.datasource.username=" + postgres.getUsername(),
-                    "spring.datasource.password=" + postgres.getPassword(),
-                    "eureka.client.enabled=false"
-            ).applyTo(configurableApplicationContext.getEnvironment());
-        }
-    }
 
 }
