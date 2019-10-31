@@ -6,7 +6,7 @@ import org.testcontainers.containers.wait.strategy.HostPortWaitStrategy;
 
 public class RedisContainer extends GenericContainer<RedisContainer> {
     public RedisContainer(Network network, int port) {
-        super("redis:5.0.5");
+        super("redis:5.0.6");
         addExposedPorts(port);
         withNetwork(network);
         withNetworkAliases("redis-alias");

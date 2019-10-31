@@ -53,7 +53,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testCreateDuplicateEmail() {
+    public void testCreateDuplicateEmailThrows() {
         controller.create(new User("", "Andrey", "andrey@testcontainers.org"));
 
         assertThrows(DuplicateKeyException.class, () ->

@@ -1,0 +1,19 @@
+1. JUnit 5 extensions
+
+@TestContainers
+
+@ExtendsWith
+
+BeforeAllCallback
+
+findSharedContainers -> isSharedContainer -> isContainer -> Container.class
+
+2. TestContainers modules
+
+PostgreSQLContainer
+
+LogMessageWaitStrategy
+
+from GenericContainer
+
+configure() -> forwarding to environment variables

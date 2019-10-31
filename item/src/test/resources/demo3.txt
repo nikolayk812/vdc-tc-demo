@@ -1,0 +1,16 @@
+Redis key value store
+
+Lettuce drive
+
+Create item, provide userID
+
+validate userID from cached value in Redis, if not there from user-service
+
+if user exists, create item, store in memory, and cache user,
+otherwise throw exception
+
+redis-cli -p
+
+KEYS *
+
+GET <key>

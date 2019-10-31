@@ -23,9 +23,9 @@ import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.core.IsNot.not;
 
 @Eureka
+@Redis
 @Postgres
 @UserService
-@Redis
 @ItemService
 class EndToEndTest {
     private static final ObjectMapper mapper = new ObjectMapper();

@@ -8,7 +8,7 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 public class PostgresExtension implements BeforeAllCallback, AfterAllCallback {
-    private final GenericContainer container = new PostgreSQLContainer()
+    private final GenericContainer container = new PostgreSQLContainer("postgres:9.6.15")
             .withDatabaseName("users")
             .withUsername("postgres")
             .withPassword("password")

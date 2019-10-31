@@ -1,0 +1,9 @@
+Docker env discovery
+
+docker ps
+
+random ports
+
+ryuk
+
+connect to Postgres

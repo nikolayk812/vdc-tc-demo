@@ -1,0 +1,9 @@
+docker network ls
+
+docker network inspect
+-> Containers
+-> Labels
+
+docker inspect <id> | grep testc
+
+Eureka dashboard

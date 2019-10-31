@@ -1,0 +1,6 @@
+Redis -> RedisExtension -> RedisContainer
+port, network, alias
+
+ItemService -> ItemExtension -> ItemContainer
+how to find Eureka
+redis-alias
